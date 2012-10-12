@@ -1,0 +1,19 @@
+%div.login-form
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    %fieldset
+      %div.input-prepend
+        %span.add-on
+          %i.icon-envelope
+        = f.email_field :email, :placeholder => 'email'
+
+      %div.input-prepend
+        %span.add-on
+          %i.icon-key
+        = f.password_field :password, :placeholder => 'password'
+
+      - if devise_mapping.rememberable?
+        %div
+          = f.check_box :remember_me, :class => 'pull-left'
+          = f.label :remember_me, :class => 'pull-left remember'
+
+    = f.submit "Sign in", :class => 'btn pull-right'

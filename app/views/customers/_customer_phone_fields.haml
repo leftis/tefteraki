@@ -1,0 +1,3 @@
+= f.input :phone_number
+= f.input :phone_type_id, :collection => PhoneType.all.map{|pt| [pt.phone_type, pt.id]}
+= f.link_to_remove "Remove phone"

@@ -1,0 +1,25 @@
+= simple_nested_form_for @customer, :html => { :class => 'form-vertical' } do |f|
+  .span7.pull-left
+    = f.input :name, :input_html => { :class => 'span6' }, :label_html => { :class => 'span3' }
+    = f.input :surname, :input_html => { :class => 'span6' }, :label_html => { :class => 'span3' }
+    = f.input :fathers_name, :input_html => { :class => 'span6' }, :label_html => { :class => 'span3' }
+    = f.input :job_title, :input_html => { :class => 'span6' }, :label_html => { :class => 'span3' }
+    = f.input :afm, :input_html => { :class => 'span6' }, :label_html => { :class => 'span3' }
+    = f.input :doi, :input_html => { :class => 'span6' }, :label_html => { :class => 'span3' }
+    = f.input :identity_number, :input_html => { :class => 'span6' }, :label_html => { :class => 'span3' }
+    = f.input :identity_created_at, :as => :string, :input_html => { :class => 'span6' }, :label_html => { :class => 'span3' }
+    = f.input :job_title, :input_html => { :class => 'span6' }, :label_html => { :class => 'span3' }
+
+    = f.input :memo, :as => :ckeditor, :label => false, :input_html => { :toolbar => 'Full' }
+  .span4.pull-right
+    .phone.well
+      = f.simple_fields_for :customer_phones
+      = f.link_to_add "Add a phone", :customer_phones
+
+    .ddresses.well
+      = f.simple_fields_for :customer_addresses
+      = f.link_to_add "Add a address", :customer_addresses
+
+  .form-actions.clear
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), customers_path, :class => 'btn'

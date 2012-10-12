@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sum: 9.99
+  paid: 9.99
+  state: MyString
+
+two:
+  sum: 9.99
+  paid: 9.99
+  state: MyString

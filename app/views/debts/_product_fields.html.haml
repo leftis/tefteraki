@@ -1,0 +1,17 @@
+.product.controls-row.controls.well
+  .infos.span11
+    .input-append
+      .pull-left= f.input :code
+      %span.add-on.pull-left
+        .icon-barcode
+
+    = f.input :name
+    = f.input :description, as: :string
+    .input-append
+      .pull-left= f.input :product_price
+      %span.add-on.pull-left €
+
+    = f.input :created_at, as: :string, :input_html => { :class => 'date' }
+    = f.input :updated_at, as: :string, :input_html => { :class => 'date' }
+  .span1
+    .btn.btn-danger.span11.delete_debt= f.link_to_remove "Delete"

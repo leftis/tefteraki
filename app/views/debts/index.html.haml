@@ -1,0 +1,13 @@
+#debts
+  %h2#month
+    = link_to "<", date: @date.prev_month
+    = @date.strftime("%B %Y")
+    = link_to ">", date: @date.next_month
+
+  = calendar @date do |date|
+    = date.day
+    - if @debts_by_date[date]
+      %ul
+        - @debts_by_date[date].each do |debt|
+          - unless debt.remaining_debt.blank?
+            %li= link_to number_to_currency(debt.remaining_debt, unit: '€'), edit_customer_debt_path(:customer_id => debt.customer.id, :id => debt)

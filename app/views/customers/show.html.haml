@@ -1,0 +1,69 @@
+- model_class = Customer
+.page-header
+  %h1=t '.title', :default => @customer.full_name
+
+.span8.pull-left
+  .infos.span4.pull-left
+    - unless @customer.name.blank?
+      %p
+        %strong= model_class.human_attribute_name(:name) + ':'
+        %br
+        = @customer.name
+
+    - unless @customer.surname.blank?
+      %p
+        %strong= model_class.human_attribute_name(:surname) + ':'
+        %br
+        = @customer.surname
+
+    - unless @customer.fathers_name.blank?
+      %p
+        %strong= model_class.human_attribute_name(:fathers_name) + ':'
+        %br
+        = @customer.fathers_name
+
+    - unless @customer.job_title.blank?
+      %p
+        %strong= model_class.human_attribute_name(:job_title) + ':'
+        %br
+        = @customer.job_title
+
+  .infos.span4.pull-left
+    - unless @customer.afm.blank?
+      %p
+        %strong= model_class.human_attribute_name(:afm) + ':'
+        %br
+        = @customer.afm
+
+    - unless @customer.doi.blank?
+      %p
+        %strong= model_class.human_attribute_name(:doi) + ':'
+        %br
+        = @customer.doi
+
+    - unless @customer.identity_number.blank?
+      %p
+        %strong= model_class.human_attribute_name(:identity_number) + ':'
+        %br
+        = @customer.identity_number
+
+    - unless @customer.identity_created_at.blank?
+      %p
+        %strong= model_class.human_attribute_name(:identity_created_at) + ':'
+        %br
+        = @customer.identity_created_at
+
+.span3.pull-right
+  - unless @customer.customer_phones.blank?
+    .well
+      = render :partial => 'phone', :collection => @customer.customer_phones
+
+  - unless @customer.customer_addresses.blank?
+    .well
+      = render :partial => 'address', :collection => @customer.customer_addresses
+
+.clear
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), customers_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_customer_path(@customer), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), customer_path(@customer), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

@@ -1,0 +1,5 @@
+= f.input :address
+= f.input :address_number
+= f.input :city
+= f.input :address_type_id, :collection => AddressType.all.map{|pt| [pt.address_type, pt.id]}
+= f.link_to_remove "Remove phone"

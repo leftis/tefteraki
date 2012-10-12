@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ammount: 9.99
+  paid_at: 2012-10-12
+
+two:
+  ammount: 9.99
+  paid_at: 2012-10-12
