@@ -13,13 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require ckeditor/init
-//= require ckeditor/ckeditor
 //= require twitter/bootstrap
 //= require bootstrap-datepicker
-
 //= require jquery_nested_form
 //= require dataTables/jquery.dataTables
 //= require_tree .
-
-$(document).ready(function(){
-});

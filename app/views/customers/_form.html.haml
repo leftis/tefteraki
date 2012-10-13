@@ -12,9 +12,11 @@
 
     = f.input :memo, :as => :ckeditor, :label => false, :input_html => { :toolbar => 'Full' }
   .span4.pull-right
+
     .phone.well
       = f.simple_fields_for :customer_phones
       = f.link_to_add "Add a phone", :customer_phones
+
 
     .ddresses.well
       = f.simple_fields_for :customer_addresses
