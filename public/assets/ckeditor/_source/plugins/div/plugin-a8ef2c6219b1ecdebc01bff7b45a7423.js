@@ -1,0 +1,9 @@
+/*
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+*/
+/**
+ * @fileOverview The "div" plugin. It wraps the selected block level elements with a 'div' element with specified styles and attributes.
+ *
+ */
+(function(){CKEDITOR.plugins.add("div",{requires:["editingblock","dialog","domiterator","styles"],init:function(e){var t=e.lang.div;e.addCommand("creatediv",new CKEDITOR.dialogCommand("creatediv")),e.addCommand("editdiv",new CKEDITOR.dialogCommand("editdiv")),e.addCommand("removediv",{exec:function(e){function u(e){var t=new CKEDITOR.dom.elementPath(e),n=t.blockLimit,r=n.is("div")&&n;r&&!r.data("cke-div-added")&&(o.push(r),r.data("cke-div-added"))}var t=e.getSelection(),n=t&&t.getRanges(),r,i=t.createBookmarks(),s,o=[];for(var a=0;a<n.length;a++)r=n[a],r.collapsed?u(t.getStartElement()):(s=new CKEDITOR.dom.walker(r),s.evaluator=u,s.lastForward());for(a=0;a<o.length;a++)o[a].remove(!0);t.selectBookmarks(i)}}),e.ui.addButton("CreateDiv",{label:t.toolbar,command:"creatediv"}),e.addMenuItems&&(e.addMenuItems({editdiv:{label:t.edit,command:"editdiv",group:"div",order:1},removediv:{label:t.remove,command:"removediv",group:"div",order:5}}),e.contextMenu&&e.contextMenu.addListener(function(e,t){if(!e||e.isReadOnly())return null;var n=new CKEDITOR.dom.elementPath(e),r=n.blockLimit;return r&&r.getAscendant("div",!0)?{editdiv:CKEDITOR.TRISTATE_OFF,removediv:CKEDITOR.TRISTATE_OFF}:null})),CKEDITOR.dialog.add("creatediv",this.path+"dialogs/div.js"),CKEDITOR.dialog.add("editdiv",this.path+"dialogs/div.js")}})})();

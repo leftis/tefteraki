@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require ckeditor/init
+//= require ckeditor/ckeditor
 //= require twitter/bootstrap
 //= require bootstrap-datepicker
 

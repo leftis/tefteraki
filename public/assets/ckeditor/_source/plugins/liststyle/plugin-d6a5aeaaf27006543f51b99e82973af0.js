@@ -1,0 +1,5 @@
+/*
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+*/
+(function(){CKEDITOR.plugins.liststyle={requires:["dialog"],init:function(e){e.addCommand("numberedListStyle",new CKEDITOR.dialogCommand("numberedListStyle")),CKEDITOR.dialog.add("numberedListStyle",this.path+"dialogs/liststyle.js"),e.addCommand("bulletedListStyle",new CKEDITOR.dialogCommand("bulletedListStyle")),CKEDITOR.dialog.add("bulletedListStyle",this.path+"dialogs/liststyle.js"),e.addMenuItems&&(e.addMenuGroup("list",108),e.addMenuItems({numberedlist:{label:e.lang.list.numberedTitle,group:"list",command:"numberedListStyle"},bulletedlist:{label:e.lang.list.bulletedTitle,group:"list",command:"bulletedListStyle"}})),e.contextMenu&&e.contextMenu.addListener(function(e,t){if(!e||e.isReadOnly())return null;while(e){var n=e.getName();if(n=="ol")return{numberedlist:CKEDITOR.TRISTATE_OFF};if(n=="ul")return{bulletedlist:CKEDITOR.TRISTATE_OFF};e=e.getParent()}return null})}},CKEDITOR.plugins.add("liststyle",CKEDITOR.plugins.liststyle)})();

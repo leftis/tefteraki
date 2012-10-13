@@ -1,0 +1,10 @@
+/*
+Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+*/
+/**
+ * @fileOverview Contains the second part of the {@link CKEDITOR} object
+ *		definition, which defines the basic editor features to be available in
+ *		the root ckeditor_basic.js file.
+ */
+CKEDITOR.status=="unloaded"&&function(){CKEDITOR.event.implementOn(CKEDITOR),CKEDITOR.loadFullCore=function(){if(CKEDITOR.status!="basic_ready"){CKEDITOR.loadFullCore._load=1;return}delete CKEDITOR.loadFullCore;var e=document.createElement("script");e.type="text/javascript",e.src=CKEDITOR.basePath+"ckeditor.js",document.getElementsByTagName("head")[0].appendChild(e)},CKEDITOR.loadFullCoreTimeout=0,CKEDITOR.replaceClass="ckeditor",CKEDITOR.replaceByClassEnabled=1;var e=function(e,t,n,r){if(CKEDITOR.env.isCompatible){CKEDITOR.loadFullCore&&CKEDITOR.loadFullCore();var i=n(e,t,r);return CKEDITOR.add(i),i}return null};CKEDITOR.replace=function(t,n){return e(t,n,CKEDITOR.editor.replace)},CKEDITOR.appendTo=function(t,n,r){return e(t,n,CKEDITOR.editor.appendTo,r)},CKEDITOR.add=function(e){var t=this._.pending||(this._.pending=[]);t.push(e)},CKEDITOR.replaceAll=function(){var e=document.getElementsByTagName("textarea");for(var t=0;t<e.length;t++){var n=null,r=e[t];if(!r.name&&!r.id)continue;if(typeof arguments[0]=="string"){var i=new RegExp("(?:^|\\s)"+arguments[0]+"(?:$|\\s)");if(!i.test(r.className))continue}else if(typeof arguments[0]=="function"){n={};if(arguments[0](r,n)===!1)continue}this.replace(r,n)}},function(){var e=function(){var e=CKEDITOR.loadFullCore,t=CKEDITOR.loadFullCoreTimeout;CKEDITOR.replaceByClassEnabled&&CKEDITOR.replaceAll(CKEDITOR.replaceClass),CKEDITOR.status="basic_ready",e&&e._load?e():t&&setTimeout(function(){CKEDITOR.loadFullCore&&CKEDITOR.loadFullCore()},t*1e3)};window.addEventListener?window.addEventListener("load",e,!1):window.attachEvent&&window.attachEvent("onload",e)}(),CKEDITOR.status="basic_loaded"}();

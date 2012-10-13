@@ -67,5 +67,5 @@ Tefteraki::Application.configure do
 
   # CKEditor
   #
-  config.assets.precompile += Ckeditor.assets
+  # config.assets.precompile += ['ckeditor/*']
 end
