@@ -1,5 +1,0 @@
-/*
-Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.html or http://ckeditor.com/license
-*/
-CKEDITOR.plugins.add("popup"),CKEDITOR.tools.extend(CKEDITOR.editor.prototype,{popup:function(e,t,n,r){t=t||"80%",n=n||"70%",typeof t=="string"&&t.length>1&&t.substr(t.length-1,1)=="%"&&(t=parseInt(window.screen.width*parseInt(t,10)/100,10)),typeof n=="string"&&n.length>1&&n.substr(n.length-1,1)=="%"&&(n=parseInt(window.screen.height*parseInt(n,10)/100,10)),t<640&&(t=640),n<420&&(n=420);var i=parseInt((window.screen.height-n)/2,10),s=parseInt((window.screen.width-t)/2,10);r=(r||"location=no,menubar=no,toolbar=no,dependent=yes,minimizable=no,modal=yes,alwaysRaised=yes,resizable=yes,scrollbars=yes")+",width="+t+",height="+n+",top="+i+",left="+s;var o=window.open("",null,r,!0);if(!o)return!1;try{var u=navigator.userAgent.toLowerCase();u.indexOf(" chrome/")==-1&&(o.moveTo(s,i),o.resizeTo(t,n)),o.focus(),o.location.href=e}catch(a){o=window.open(e,null,r,!0)}return!0}});

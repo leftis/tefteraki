@@ -1,9 +1,0 @@
-/*
-Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.html or http://ckeditor.com/license
-*/
-/**
- * @fileOverview Defines the {@link CKEDITOR.env} object, which constains
- *		environment and browser information.
- */
-CKEDITOR.env||(CKEDITOR.env=function(){var e=navigator.userAgent.toLowerCase(),t=window.opera,n={ie:!1,opera:!!t&&t.version,webkit:e.indexOf(" applewebkit/")>-1,air:e.indexOf(" adobeair/")>-1,mac:e.indexOf("macintosh")>-1,quirks:document.compatMode=="BackCompat",mobile:e.indexOf("mobile")>-1,iOS:/(ipad|iphone|ipod)/.test(e),isCustomDomain:function(){if(!this.ie)return!1;var e=document.domain,t=window.location.hostname;return e!=t&&e!="["+t+"]"},secure:location.protocol=="https:"};n.gecko=navigator.product=="Gecko"&&!n.webkit&&!n.opera;var r=0;n.ie&&(r=parseFloat(e.match(/msie (\d+)/)[1]),n.ie8=!!document.documentMode,n.ie8Compat=document.documentMode==8,n.ie9Compat=document.documentMode==9,n.ie7Compat=r==7&&!document.documentMode||document.documentMode==7,n.ie6Compat=r<7||n.quirks);if(n.gecko){var i=e.match(/rv:([\d\.]+)/);i&&(i=i[1].split("."),r=i[0]*1e4+(i[1]||0)*100+(i[2]||0)*1)}return n.opera&&(r=parseFloat(t.version())),n.air&&(r=parseFloat(e.match(/ adobeair\/(\d+)/)[1])),n.webkit&&(r=parseFloat(e.match(/ applewebkit\/(\d+)/)[1])),n.version=r,n.isCompatible=n.iOS&&r>=534||!n.mobile&&(n.ie&&r>=6||n.gecko&&r>=10801||n.opera&&r>=9.5||n.air&&r>=1||n.webkit&&r>=522||!1),n.cssClass="cke_browser_"+(n.ie?"ie":n.gecko?"gecko":n.opera?"opera":n.webkit?"webkit":"unknown"),n.quirks&&(n.cssClass+=" cke_browser_quirks"),n.ie&&(n.cssClass+=" cke_browser_ie"+(n.version<7?"6":n.version>=8?document.documentMode:"7"),n.quirks&&(n.cssClass+=" cke_browser_iequirks")),n.gecko&&r<10900&&(n.cssClass+=" cke_browser_gecko18"),n.air&&(n.cssClass+=" cke_browser_air"),n}());

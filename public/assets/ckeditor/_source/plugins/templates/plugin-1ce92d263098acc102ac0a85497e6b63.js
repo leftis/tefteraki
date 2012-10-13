@@ -1,5 +1,0 @@
-/*
-Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.html or http://ckeditor.com/license
-*/
-(function(){CKEDITOR.plugins.add("templates",{requires:["dialog"],init:function(e){CKEDITOR.dialog.add("templates",CKEDITOR.getUrl(this.path+"dialogs/templates.js")),e.addCommand("templates",new CKEDITOR.dialogCommand("templates")),e.ui.addButton("Templates",{label:e.lang.templates.button,command:"templates"})}});var e={},t={};CKEDITOR.addTemplates=function(t,n){e[t]=n},CKEDITOR.getTemplates=function(t){return e[t]},CKEDITOR.loadTemplates=function(e,n){var r=[];for(var i=0,s=e.length;i<s;i++)t[e[i]]||(r.push(e[i]),t[e[i]]=1);r.length?CKEDITOR.scriptLoader.load(r,n):setTimeout(n,0)}})(),CKEDITOR.config.templates_files=[CKEDITOR.getUrl("_source/plugins/templates/templates/default.js")],CKEDITOR.config.templates_replaceContent=!0;

@@ -1,5 +1,0 @@
-/*
-Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.html or http://ckeditor.com/license
-*/
-CKEDITOR.plugins.add("menubutton",{requires:["button","menu"],beforeInit:function(e){e.ui.addHandler(CKEDITOR.UI_MENUBUTTON,CKEDITOR.ui.menuButton.handler)}}),CKEDITOR.UI_MENUBUTTON="menubutton",function(){var e=function(e){var t=this._;if(t.state===CKEDITOR.TRISTATE_DISABLED)return;t.previousState=t.state;var n=t.menu;n||(n=t.menu=new CKEDITOR.menu(e,{panel:{className:e.skinClass+" cke_contextmenu",attributes:{"aria-label":e.lang.common.options}}}),n.onHide=CKEDITOR.tools.bind(function(){this.setState(this.modes&&this.modes[e.mode]?t.previousState:CKEDITOR.TRISTATE_DISABLED)},this),this.onMenu&&n.addListener(this.onMenu));if(t.on){n.hide();return}this.setState(CKEDITOR.TRISTATE_ON),n.show(CKEDITOR.document.getById(this._.id),4)};CKEDITOR.ui.menuButton=CKEDITOR.tools.createClass({base:CKEDITOR.ui.button,$:function(t){var n=t.panel;delete t.panel,this.base(t),this.hasArrow=!0,this.click=e},statics:{handler:{create:function(e){return new CKEDITOR.ui.menuButton(e)}}}})}();

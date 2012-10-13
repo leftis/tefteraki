@@ -1,5 +1,0 @@
-/*
-Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.html or http://ckeditor.com/license
-*/
-(function(){var e={};CKEDITOR.lang={languages:{af:1,ar:1,bg:1,bn:1,bs:1,ca:1,cs:1,cy:1,da:1,de:1,el:1,"en-au":1,"en-ca":1,"en-gb":1,en:1,eo:1,es:1,et:1,eu:1,fa:1,fi:1,fo:1,"fr-ca":1,fr:1,gl:1,gu:1,he:1,hi:1,hr:1,hu:1,is:1,it:1,ja:1,ka:1,km:1,ko:1,ku:1,lt:1,lv:1,mn:1,ms:1,nb:1,nl:1,no:1,pl:1,"pt-br":1,pt:1,ro:1,ru:1,sk:1,sl:1,"sr-latn":1,sr:1,sv:1,th:1,tr:1,ug:1,uk:1,vi:1,"zh-cn":1,zh:1},load:function(e,t,n){if(!e||!CKEDITOR.lang.languages[e])e=this.detect(t,e);this[e]?n(e,this[e]):CKEDITOR.scriptLoader.load(CKEDITOR.getUrl("_source/lang/"+e+".js"),function(){n(e,this[e])},this)},detect:function(e,t){var n=this.languages;t=t||navigator.userLanguage||navigator.language||e;var r=t.toLowerCase().match(/([a-z]+)(?:-([a-z]+))?/),i=r[1],s=r[2];return n[i+"-"+s]?i=i+"-"+s:n[i]||(i=null),CKEDITOR.lang.detect=i?function(){return i}:function(e){return e},i||e}}})();

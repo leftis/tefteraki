@@ -1,5 +1,0 @@
-/*
-Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.html or http://ckeditor.com/license
-*/
-CKEDITOR.htmlParser.basicWriter=CKEDITOR.tools.createClass({$:function(){this._={output:[]}},proto:{openTag:function(e,t){this._.output.push("<",e)},openTagClose:function(e,t){t?this._.output.push(" />"):this._.output.push(">")},attribute:function(e,t){typeof t=="string"&&(t=CKEDITOR.tools.htmlEncodeAttr(t)),this._.output.push(" ",e,'="',t,'"')},closeTag:function(e){this._.output.push("</",e,">")},text:function(e){this._.output.push(e)},comment:function(e){this._.output.push("<!--",e,"-->")},write:function(e){this._.output.push(e)},reset:function(){this._.output=[],this._.indent=!1},getHtml:function(e){var t=this._.output.join("");return e&&this.reset(),t}}});

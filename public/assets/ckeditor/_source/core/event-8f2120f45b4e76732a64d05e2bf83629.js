@@ -1,9 +1,0 @@
-/*
-Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.html or http://ckeditor.com/license
-*/
-/**
- * @fileOverview Defines the {@link CKEDITOR.event} class, which serves as the
- *		base for classes and objects that require event handling features.
- */
-CKEDITOR.event||(CKEDITOR.event=function(){},CKEDITOR.event.implementOn=function(e){var t=CKEDITOR.event.prototype;for(var n in t)e[n]==undefined&&(e[n]=t[n])},CKEDITOR.event.prototype=function(){var e=function(e){var t=e.getPrivate&&e.getPrivate()||e._||(e._={});return t.events||(t.events={})},t=function(e){this.name=e,this.listeners=[]};return t.prototype={getListenerIndex:function(e){for(var t=0,n=this.listeners;t<n.length;t++)if(n[t].fn==e)return t;return-1}},{on:function(n,r,i,s,o){var u=e(this),a=u[n]||(u[n]=new t(n));if(a.getListenerIndex(r)<0){var f=a.listeners;i||(i=this),isNaN(o)&&(o=10);var l=this,c=function(e,t,o,u){var a={name:n,sender:this,editor:e,data:t,listenerData:s,stop:o,cancel:u,removeListener:function(){l.removeListener(n,r)}};return r.call(i,a),a.data};c.fn=r,c.priority=o;for(var h=f.length-1;h>=0;h--)if(f[h].priority<=o){f.splice(h+1,0,c);return}f.unshift(c)}},fire:function(){var t=!1,n=function(){t=!0},r=!1,i=function(){r=!0};return function(s,o,u){var a=e(this)[s],f=t,l=r;t=r=!1;if(a){var c=a.listeners;if(c.length){c=c.slice(0);for(var h=0;h<c.length;h++){var p=c[h].call(this,u,o,n,i);typeof p!="undefined"&&(o=p);if(t||r)break}}}var d=r||(typeof o=="undefined"?!1:o);return t=f,r=l,d}}(),fireOnce:function(t,n,r){var i=this.fire(t,n,r);return delete e(this)[t],i},removeListener:function(t,n){var r=e(this)[t];if(r){var i=r.getListenerIndex(n);i>=0&&r.listeners.splice(i,1)}},hasListeners:function(t){var n=e(this)[t];return n&&n.listeners.length>0}}}());

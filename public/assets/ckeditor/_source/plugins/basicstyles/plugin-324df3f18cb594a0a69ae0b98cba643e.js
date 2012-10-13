@@ -1,5 +1,0 @@
-/*
-Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
-For licensing, see LICENSE.html or http://ckeditor.com/license
-*/
-CKEDITOR.plugins.add("basicstyles",{requires:["styles","button"],init:function(e){var t=function(t,n,r,i){var s=new CKEDITOR.style(i);e.attachStyleStateChange(s,function(t){!e.readOnly&&e.getCommand(r).setState(t)}),e.addCommand(r,new CKEDITOR.styleCommand(s)),e.ui.addButton(t,{label:n,command:r})},n=e.config,r=e.lang;t("Bold",r.bold,"bold",n.coreStyles_bold),t("Italic",r.italic,"italic",n.coreStyles_italic),t("Underline",r.underline,"underline",n.coreStyles_underline),t("Strike",r.strike,"strike",n.coreStyles_strike),t("Subscript",r.subscript,"subscript",n.coreStyles_subscript),t("Superscript",r.superscript,"superscript",n.coreStyles_superscript)}}),CKEDITOR.config.coreStyles_bold={element:"strong",overrides:"b"},CKEDITOR.config.coreStyles_italic={element:"em",overrides:"i"},CKEDITOR.config.coreStyles_underline={element:"u"},CKEDITOR.config.coreStyles_strike={element:"strike"},CKEDITOR.config.coreStyles_subscript={element:"sub"},CKEDITOR.config.coreStyles_superscript={element:"sup"};
