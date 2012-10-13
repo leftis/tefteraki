@@ -24,8 +24,6 @@ gem 'capistrano'
 
 gem 'jquery-rails'
 
-gem 'pg'
-
 gem 'simple_form'
 gem "nested_form"
 gem "haml-rails"
