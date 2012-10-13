@@ -18,10 +18,12 @@
     %span.add-on.pull-left
       .icon-calendar
 
-  .pull-right= f.link_to_add "Add a product", :products
+
 
   = f.input :customer_id, as: :hidden
   = f.simple_fields_for :products
+  .pull-right= f.link_to_add "Add a product", :products
+
   .clear
   .form-actions
     = f.button :submit, :class => 'btn-primary'
