@@ -20,6 +20,8 @@ group :assets do
   gem "less"
 end
 
+gem 'capistrano'
+
 gem 'jquery-rails'
 
 gem 'pg'
