@@ -22,8 +22,7 @@ end
 
 gem 'jquery-rails'
 
-# Deploy with Capistrano
-gem 'capistrano'
+gem 'pg'
 
 gem 'simple_form'
 gem "nested_form"
