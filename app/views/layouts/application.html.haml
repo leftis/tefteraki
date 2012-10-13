@@ -51,7 +51,7 @@
               .btn.btn-danger.span11.delete_debt= link_to "Delete debt", @debt, method: :delete
 
         .dum{ :class => "#{(@customer and !@customer.id.blank?) ? 'span10' : 'span12' }" }
-          = bootstrap_flash
+          -# bootstrap_flash
           = yield
 
       %footer
