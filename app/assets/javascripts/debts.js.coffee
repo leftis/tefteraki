@@ -1,4 +1,5 @@
 jQuery ->
+
   $('#debt_published_at, #dose_paid_at').datepicker
     "format": "dd-mm-yyyy"
     "weekStart": 1

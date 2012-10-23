@@ -12,6 +12,7 @@ class DebtsController < ApplicationController
 
   def edit
     @debt.doses.build
+    @doses = @debt.doses.latest.limit(4) unless @debt.doses.blank?
   end
 
   def update
@@ -21,19 +22,6 @@ class DebtsController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def doses
-    @debt = Debt.find_by_id params[:debt_id]
-    @dose = Dose.new params[:dose]
-    @dose.debt_id = params[:debt_id]
-    @dose.save
-
-    respond_to do |format|
-      format.html { render 'edit' }
-      format.js { render 'doses', :layout => false }
-    end
-
   end
 
   def create

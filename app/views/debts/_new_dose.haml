@@ -1,11 +1,19 @@
-= simple_form_for [@customer, @debt, Dose.new], :remote => :true, :format => :js, :method => :get do |dose|
-  #dose_modal.modal{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+= simple_form_for [@customer, @debt, Dose.new], :remote => :true, :format => :js do |dose|
+  #dose_modal.modal.hide.fade{ "aria-hidden" => "false", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1" }
     .modal-header
       %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
       %h3#myModalLabel Pay dose
+
     .modal-body
-      = dose.input :ammount
-      = dose.input :paid_at, as: :string, :input_html => { :class => 'date' }
+      .span6.pull-left
+        = dose.input :ammount
+        = dose.input :paid_at, as: :string, :input_html => { :class => 'date' }
+
+      - unless @doses.blank?
+        .span6.pull-left
+          %ul
+            - @doses.each do |dose|
+              %li= "#{number_to_currency(dose.ammount, unit: '€')} - #{dose.paid_at}"
     .modal-footer
-      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+      %button.btn{ :'aria-hidden' => true, :'data-dismiss' => 'modal' } Close
       %button.btn.btn-primary= dose.submit

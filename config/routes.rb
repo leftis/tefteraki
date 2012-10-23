@@ -1,5 +1,8 @@
 Tefteraki::Application.routes.draw do
+  get "dashboard/index"
+
   mount Ckeditor::Engine => '/ckeditor'
+
 
   resources :debts, :only =>  :destroy
   devise_for :users, :path => '/', :path_names => { :sign_in => 'login',
@@ -7,7 +10,7 @@ Tefteraki::Application.routes.draw do
 
   resources :customers do
     resources :debts do
-      get 'doses'
+      resources :doses
     end
   end
 
@@ -15,5 +18,5 @@ Tefteraki::Application.routes.draw do
   resources :address_types
   resources :customer_phones
 
-  root :to => 'customers#index'
+  root :to => 'dashboard#index'
 end

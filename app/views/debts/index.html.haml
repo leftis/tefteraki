@@ -10,4 +10,4 @@
       %ul
         - @debts_by_date[date].each do |debt|
           - unless debt.remaining_debt.blank?
-            %li= link_to number_to_currency(debt.remaining_debt, unit: '€'), edit_customer_debt_path(:customer_id => debt.customer.id, :id => debt)
+            %li.debt= link_to number_to_currency(debt.remaining_debt, unit: '€'), edit_customer_debt_path(:customer_id => debt.customer.id, :id => debt)

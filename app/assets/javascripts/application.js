@@ -12,9 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require highcharts
 //= require ckeditor/init
 //= require twitter/bootstrap
 //= require bootstrap-datepicker
 //= require jquery_nested_form
 //= require dataTables/jquery.dataTables
 //= require_tree .
+
+

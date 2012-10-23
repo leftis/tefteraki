@@ -1,33 +1,51 @@
-= simple_nested_form_for [:customer, @debt] , :html => { :class => 'form-horizontal' } do |f|
+%ul.nav.nav-tabs
+  %li.active
+    %a{:href => "#form"} Debt
+  %li
+    %a{:href => "#dose_list"} Dose List
 
-  .input-append
-    .pull-left= f.input :sum, as: :decimal, disabled: true
-    %span.add-on.pull-left €
+#form
+  = simple_nested_form_for [:customer, @debt] , :html => { :class => 'form-horizontal' } do |f|
 
-  .input-append
-    - if @debt.paid_untill_now.nil?
-      .pull-left= f.input :paid, as: :string
-    - else
-      .pull-left
-        :plain
-          <div class="control-group decimal optional disabled"><label class="decimal optional control-label">Paid</label><div class="controls"><input class="numeric decimal optional disabled" disabled="disabled" id="paid_unitl_now" step="any" type="number" value ="#{@debt.paid_untill_now}"></div></div>
-    %span.add-on.pull-left €
+    .input-append
+      .pull-left= f.input :sum, as: :decimal, disabled: true
+      %span.add-on.pull-left €
 
-  .input-append
-    .pull-left= f.input :published_at, as: :string, :input_html => { :class => 'date' }
-    %span.add-on.pull-left
-      .icon-calendar
+    .input-append
+      - if @debt.paid_untill_now.nil?
+        .pull-left= f.input :paid, as: :string
+      - else
+        .pull-left
+          .control-group.decimal.optional.disabled
+            %label.decimal.optional.control-label Paid
+            .controls
+              %input#paid_unitl_now.numeric.decimal.optional.disabled{:disabled => "disabled", :step => "any", :type => "number", :value => "#{@debt.paid_untill_now}" }
+
+      %span.add-on.pull-left €
+
+    .input-append
+      .pull-left= f.input :published_at, as: :string, :input_html => { :class => 'date' }
+      %span.add-on.pull-left
+        .icon-calendar
 
 
 
-  = f.input :customer_id, as: :hidden
-  = f.simple_fields_for :products
-  .pull-right= f.link_to_add "Add a product", :products
+    = f.input :customer_id, as: :hidden
+    = f.simple_fields_for :products
+    .pull-right= f.link_to_add "Add a product", :products
 
-  .clear
-  .form-actions
-    = f.button :submit, :class => 'btn-primary'
-    =# link_to t('.cancel', :default => t("helpers.links.cancel")), debt_path, :class => 'btn'
-- if @debt.id
-  = link_to 'Pay', "#dose_modal", role: :button, :class => 'btn btn-primary pull-left', :'data-toggle' => :modal
-  = render :partial => 'new_dose'
+    .clear
+    .form-actions
+      .btn-group
+        %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          Action
+          %span.caret
+        %ul.dropdown-menu
+          %li= f.button :submit
+
+          - if @debt.id
+            %li= link_to 'Pay', "#dose_modal", role: :button, :'data-toggle' => :modal
+
+= render :partial => 'new_dose'
+
+#dose_list

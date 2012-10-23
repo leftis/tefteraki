@@ -1,7 +1,13 @@
 class Debt < ActiveRecord::Base
   attr_accessible :paid, :state, :sum, :customer_id, :products_attributes, :published_at, :doses_attributes
+
+  # Callbacks
+  #
   before_save :calculated_cost
-  # before_save :check_status
+
+  # Validations
+  #
+  validates :paid, :published_at, presence: true
 
   # Associations
   #
@@ -9,7 +15,30 @@ class Debt < ActiveRecord::Base
   has_many :doses
   belongs_to :customer
 
+  # Nested attributes
+  #
   accepts_nested_attributes_for :products, :doses
+
+  # Scopes
+  #
+  default_scope order('published_at DESC')
+  scope :on_year , ->(year)             { where('YEAR(published_at) = ?', year) }
+  scope :on_month, ->(month, year)      { where('YEAR(published_at) = ? AND MONTH(published_at) = ?', year, month) }
+  scope :on_day  , ->(day, month, year) {
+    where('YEAR(published_at) = ? AND MONTH(published_at) = ? AND DAY(published_at) = ?', year, month, day)
+  }
+
+  # States
+  #
+  state_machine :state, :initial => :unpaid do
+    event :paid_dose do
+      transition :from => :unpaid, :to => :paid, :if => lambda {|debt| debt.paid? }
+    end
+  end
+
+  def self.debts_grouped_by_published_at
+    self.all.group_by(&:published_at)
+  end
 
   def paid_untill_now
     paid + doses_ammount unless paid.blank? && doses.blank?
@@ -28,11 +57,8 @@ class Debt < ActiveRecord::Base
     doses.blank? ? 0 : doses.collect(&:ammount).compact.sum
   end
 
-  def debt_status
-    if remaining_debt <= 0
-      :completed
-    else
-      :uncompleted
-    end
+  def paid?
+    remaining_debt.to_i == 0
   end
+
 end
