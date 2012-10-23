@@ -2,15 +2,13 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 
-gem 'pg'
-
 group :development do
-  gem 'sqlite3'
+  gem 'mysql2'
   gem 'pry'
 end
 
 group :assets do
-  gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-datatables-rails'#, github: 'rweng/jquery-datatables-rails'
   gem 'jquery-ui-rails'
   gem "sass"
   gem 'bootstrap-datepicker-rails'
@@ -35,3 +33,6 @@ gem 'devise'
 gem "ckeditor", "3.7.1"
 gem "carrierwave"
 gem "mini_magick"
+gem "lazy_high_charts"
+gem 'state_machine'
+gem 'ruby-graphviz', :require => 'graphviz' # Optional: only required for graphing
