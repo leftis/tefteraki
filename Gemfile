@@ -36,3 +36,4 @@ gem "mini_magick"
 gem "lazy_high_charts"
 gem 'state_machine'
 gem 'ruby-graphviz', :require => 'graphviz' # Optional: only required for graphing
+gem 'newrelic_rpm'
